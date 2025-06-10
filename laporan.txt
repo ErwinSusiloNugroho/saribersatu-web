@@ -1,0 +1,28 @@
+Tanggal: 2025-05-30
+Jenis: pembelian
+- a | Jumlah: 3 | Harga: Rp40,000 | Nota: 
+
+Tanggal: 2025-05-30
+Jenis: pembelian
+- afsd | Jumlah: 4 | Harga: Rp5,000 | Nota: 
+
+Tanggal: 2025-05-30
+Jenis: pembelian
+- afsd | Jumlah: 4 | Harga: Rp5,000 | Nota: 
+
+Tanggal: 2025-05-30
+Jenis: pembelian
+- dfg | Jumlah: 10 | Harga: Rp15,000 | Nota: 
+
+Tanggal: 2025-05-30
+Jenis: pembelian
+- dfg | Jumlah: 10 | Harga: Rp15,000 | Nota: 
+
+Tanggal: 2025-05-30
+Jenis: penjualan
+- sabun bersih  | Jumlah: 4 | Harga: Rp13,000 | Nota: 
+
+Tanggal: 2025-06-10
+Jenis: penjualan
+- back | Jumlah: 68 | Harga: Rp90,000 | Nota: uploads/1749533583_repository-open-graph-template.png
+
