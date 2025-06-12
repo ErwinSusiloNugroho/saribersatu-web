@@ -164,7 +164,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         <td class="p-3"><?= htmlspecialchars($item['nama_suppliyer']) ?></td>
                         <td class="p-3">Rp <?= number_format((int)$item['harga'], 0, ',', '.') ?></td>
                         <td class="p-3">
-                            <a href="edit_bahan.php?id=<?= (int)$item['id_bahan'] ?>" class="edit bg-blue-600 hover:bg-blue-700 text-white px-3 py-1 rounded text-sm mr-2">Edit</a>
+                            <a href="edit_bahan.php?id=<?= (int)$item['id_bahan'] ?>" class="edit ">Edit</a>
                             <button type="button" class="hapus bg-red-600 hover:bg-red-700 text-white px-3 py-1 rounded text-sm" data-id="<?= (int)$item['id_bahan'] ?>">Hapus</button>
                         </td>
                     </tr>

@@ -26,3 +26,7 @@ Tanggal: 2025-06-10
 Jenis: penjualan
 - back | Jumlah: 68 | Harga: Rp90,000 | Nota: uploads/1749533583_repository-open-graph-template.png
 
+Tanggal: 2025-06-10
+Jenis: penjualan
+- back | Jumlah: 23 | Harga: Rp3,000 | Nota: uploads/1749539154_iki.png
+
