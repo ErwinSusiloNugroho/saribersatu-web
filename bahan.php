@@ -140,37 +140,51 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         
         <form method="post">
             <input type="hidden" name="aksi" value="laporan">
-            <table class="w-full bg-white rounded-lg shadow">
-                <thead class="bg-gray-300">
-                    <tr>
-                        <th class="p-3 text-left">Nama Bahan</th>
-                        <th class="p-3 text-left">Stok</th>
-                        <th class="p-3 text-left">Nama Suppliyer</th>
-                        <th class="p-3 text-left">Harga</th>
-                        <th class="p-3 text-left">Aksi</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <?php 
-                    // Reset pointer untuk membaca ulang hasil query
-                    mysqli_data_seek($result, 0);
-                    while ($item = mysqli_fetch_assoc($result)) : ?>
-                    <tr class="border-t" data-id="<?= (int)$item['id_bahan'] ?>">
-                        <td class="p-3"><?= htmlspecialchars($item['nama_bahan']) ?></td>
-                        <td class="p-3">
-                            <?= (int)$item['stok_bahan'] ?>
-                            <input type="hidden" name="stok_laporan[<?= (int)$item['id_bahan'] ?>]" value="<?= (int)$item['stok_bahan'] ?>">
-                        </td>
-                        <td class="p-3"><?= htmlspecialchars($item['nama_suppliyer']) ?></td>
-                        <td class="p-3">Rp <?= number_format((int)$item['harga'], 0, ',', '.') ?></td>
-                        <td class="p-3">
-                            <a href="edit_bahan.php?id=<?= (int)$item['id_bahan'] ?>" class="edit ">Edit</a>
-                            <button type="button" class="hapus bg-red-600 hover:bg-red-700 text-white px-3 py-1 rounded text-sm" data-id="<?= (int)$item['id_bahan'] ?>">Hapus</button>
-                        </td>
-                    </tr>
-                    <?php endwhile; ?>
-                </tbody>
-            </table>
+            <!-- Ganti bagian tabel di bahan.php -->
+<table class="w-full bg-white rounded-lg shadow">
+    <thead class="bg-gray-300">
+        <tr>
+            <th class="p-3 text-left">Nama Bahan</th>
+            <th class="p-3 text-left">Stok</th>
+            <th class="p-3 text-left">Nama Suppliyer</th>
+            <th class="p-3 text-left">Harga</th>
+            <th class="p-3 text-left">Aksi</th>
+        </tr>
+    </thead>
+    <tbody>
+        <?php 
+        // Reset pointer untuk membaca ulang hasil query
+        mysqli_data_seek($result, 0);
+        while ($item = mysqli_fetch_assoc($result)) : ?>
+        <tr class="border-t hover:bg-gray-50" data-id="<?= (int)$item['id_bahan'] ?>">
+            <td class="p-3"><?= htmlspecialchars($item['nama_bahan']) ?></td>
+            <td class="p-3">
+                <?= (int)$item['stok_bahan'] ?>
+                <input type="hidden" name="stok_laporan[<?= (int)$item['id_bahan'] ?>]" value="<?= (int)$item['stok_bahan'] ?>">
+            </td>
+            <td class="p-3"><?= htmlspecialchars($item['nama_suppliyer']) ?></td>
+            <td class="p-3">Rp <?= number_format((int)$item['harga'], 0, ',', '.') ?></td>
+            <td class="p-3">
+                <div class="flex space-x-2">
+                    <!-- Tombol Edit yang diperbaiki -->
+                    <a href="edit_bahan.php?id=<?= (int)$item['id_bahan'] ?>" 
+                       class="bg-green-600 hover:bg-blue-700 text-white px-3 py-1 rounded text-sm font-medium transition duration-200 inline-block"
+                       onclick="console.log('Edit clicked for ID: <?= (int)$item['id_bahan'] ?>')">
+                        Edit
+                    </a>
+                    
+                    <!-- Tombol Hapus -->
+                    <button type="button" 
+                            class="hapus bg-red-600 hover:bg-red-700 text-white px-3 py-1 rounded text-sm font-medium transition duration-200" 
+                            data-id="<?= (int)$item['id_bahan'] ?>">
+                        Hapus
+                    </button>
+                </div>
+            </td>
+        </tr>
+        <?php endwhile; ?>
+    </tbody>
+</table>
 
             <div class="mt-6 flex items-center gap-4">
                 <label for="tanggal" class="font-medium">Tanggal:</label>
@@ -181,7 +195,41 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     </main>
 </div>
 
+// Tambahkan script ini di bagian bawah bahan.php, sebelum </body>
+
 <script>
+    // Debug untuk tombol edit
+    document.addEventListener('DOMContentLoaded', function() {
+        console.log('DOM loaded, checking edit buttons...');
+        
+        // Cek semua link edit
+        const editLinks = document.querySelectorAll('a[href*="edit_bahan.php"]');
+        console.log('Found', editLinks.length, 'edit links');
+        
+        editLinks.forEach((link, index) => {
+            console.log(`Edit link ${index}:`, link.href);
+            
+            // Tambah event listener untuk debugging
+            link.addEventListener('click', function(e) {
+                console.log('Edit link clicked:', this.href);
+                
+                // Cek apakah file edit_bahan.php ada
+                fetch(this.href, { method: 'HEAD' })
+                    .then(response => {
+                        if (!response.ok) {
+                            e.preventDefault();
+                            alert('File edit_bahan.php tidak ditemukan atau tidak dapat diakses!');
+                            console.error('Edit file not accessible:', response.status);
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Error checking edit file:', error);
+                    });
+            });
+        });
+    });
+
+    // Existing code untuk form toggle
     const form = document.getElementById('formTambah');
     const button = document.getElementById('btnToggle');
 
@@ -223,7 +271,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             const namaBahan = tr.querySelector('td:first-child').textContent;
 
             // Debug log
-            console.log('Button clicked, ID:', id);
+            console.log('Delete button clicked, ID:', id);
             console.log('Row data-id:', tr.getAttribute('data-id'));
 
             if (!id) {
