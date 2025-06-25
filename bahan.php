@@ -168,7 +168,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <div class="flex space-x-2">
                     <!-- Tombol Edit yang diperbaiki -->
                     <a href="edit_bahan.php?id=<?= (int)$item['id_bahan'] ?>" 
-                       class="bg-green-600 hover:bg-blue-700 text-white px-3 py-1 rounded text-sm font-medium transition duration-200 inline-block"
+                       class="bg-green-600 hover:bg-green-700 text-white px-3 py-1 rounded text-sm font-medium transition duration-200 inline-block"
                        onclick="console.log('Edit clicked for ID: <?= (int)$item['id_bahan'] ?>')">
                         Edit
                     </a>
