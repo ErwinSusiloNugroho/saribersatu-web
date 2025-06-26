@@ -195,7 +195,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     </main>
 </div>
 
-// Tambahkan script ini di bagian bawah bahan.php, sebelum </body>
+</body>
 
 <script>
     // Debug untuk tombol edit
