@@ -30,4 +30,16 @@ Tanggal: 2025-06-10
 Jenis: penjualan
 - back | Jumlah: 23 | Harga: Rp3,000 | Nota: uploads/1749539154_iki.png
 
-t
+tTanggal: 2025-06-26
+Jenis: pembelian
+- heza | Jumlah: 21 | Harga: Rp8,811 | Nota: 
+
+Tanggal: 2025-06-18
+Jenis: pembelian
+- ginjala | Jumlah: 711 | Harga: Rp112,311 | Nota: 
+- dcaa | Jumlah: 161 | Harga: Rp7,617 | Nota: 
+
+Tanggal: 2025-06-16
+Jenis: pembelian
+- hgHG | Jumlah: 6111 | Harga: Rp91,111 | Nota: uploads/1750909298_ADMIN.png
+
